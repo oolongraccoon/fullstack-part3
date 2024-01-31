@@ -2,10 +2,8 @@ const express = require('express')
 const app = express()
 const morgan = require('morgan')
 
+app.use(express.static('build'))
 
-// morgan.token('req-body', function getBody (req) {
-//   return JSON.stringify(req.body)
-// })
 morgan.token('req-body', req => JSON.stringify(req.body))
 const Format = ':method :url :status :res[content-length] - :response-time ms :req-body';
 app.use(morgan(Format))
